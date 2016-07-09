@@ -1,5 +1,10 @@
 package com.template.bigdata.kafka;
-
+/* 
+ * Author : Arunmozhi, 
+ * Date: July, 9th 2016
+ * Below book is huge reference to build this template.
+ * Learning Apache Kafka - Second Edition, By: Nishant Garg
+ */
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +15,11 @@ import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
 
-public class KafkaTopicReader {
+public class KafkaTopicConsumer {
     private final ConsumerConnector consumer;
     private final String topic;
 
-    public KafkaTopicReader(String zookeeper, String groupId, String topic) {
+    public KafkaTopicConsumer(String zookeeper, String groupId, String topic) {
         consumer = kafka.consumer.Consumer.createJavaConsumerConnector(createConsumerConfig(zookeeper, groupId));
         this.topic = topic;
     }
@@ -64,7 +69,7 @@ public class KafkaTopicReader {
         String zooKeeper = args[0];
         String groupId = args[1];
         String topic = args[2];
-        KafkaTopicReader simpleHLConsumer = new KafkaTopicReader(zooKeeper, groupId, topic);
+        KafkaTopicConsumer simpleHLConsumer = new KafkaTopicConsumer(zooKeeper, groupId, topic);
         simpleHLConsumer.testConsumer();
     }
 
