@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>stormproject</artifactId>
+  <groupId>org.storm</groupId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>stormproject</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+    <repositories> 
+      <repository> 
+        <id>clojars.org</id> 
+        <url>http://clojars.org/repo</url> 
+      </repository> 
+    </repositories> 
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+	<!--   <dependency>
+	    <groupId>org.apache.kafka</groupId>
+	    <artifactId>kafka_2.8.0</artifactId>
+	    <version>0.8.0-beta1</version>
+	</dependency>
+    <dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
+	</dependency>
+	<dependency>
+	    <groupId>io.dropwizard.metrics</groupId>
+	    <artifactId>metrics-core</artifactId>
+	    <version>3.1.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.scala-lang</groupId>
+	    <artifactId>scala-library</artifactId>
+	    <version>2.11.7</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.12</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.zookeeper</groupId>
+	    <artifactId>zookeeper</artifactId>
+	    <version>3.4.5</version>
+	    <type>pom</type>
+	</dependency>
+	<dependency>
+	    <groupId>com.101tec</groupId>
+	    <artifactId>zkclient</artifactId>
+	    <version>0.7</version>
+	</dependency> -->
+      <dependency>
+          <groupId>org.apache.storm</groupId>
+          <artifactId>storm-core</artifactId>
+          <version>0.9.6</version>
+          <exclusions>
+      		<exclusion>
+	      		<artifactId>log4j-over-slf4j</artifactId>
+	      		<groupId>org.slf4j</groupId>
+      		</exclusion>
+      	  </exclusions>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.storm</groupId>
+          <artifactId>storm-kafka</artifactId>
+          <version>0.9.6</version>
+	</dependency>	
+	 <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.8.2.1</version>
+    </dependency>
+    <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.10</artifactId>
+            <version>0.8.2.1</version>
+	</dependency>
+
+	 <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.21</version>
+</dependency>
+    <dependency>
+        <groupId>storm</groupId>
+        <artifactId>storm</artifactId>
+        <version>0.9.0.1</version>
+      <scope>compile</scope>
+      <exclusions>
+      	<exclusion>
+      		<artifactId>log4j-over-slf4j</artifactId>
+      		<groupId>org.slf4j</groupId>
+      	</exclusion>
+      	<exclusion>
+      		<artifactId>slf4j-api</artifactId>
+      		<groupId>org.slf4j</groupId>
+      	</exclusion>
+      	<exclusion>
+      		<artifactId>logback-classic</artifactId>
+      		<groupId>ch.qos.logback</groupId>
+      	</exclusion>
+      </exclusions>
+    </dependency>	
+    
+  </dependencies>
+
+  
+
+        
+        
+    <build>
+    <finalName>FirstStormCode</finalName>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12.4</version>
+        <configuration>
+          <!-- avoids unit test bytecode issues under java 7 -->
+          <argLine>-XX:-UseSplitVerifier</argLine>
+          <!-- there are scenarios when jvm gets killed because
+          worker throws an exception and tests run, fail everything is 0. This is to
+          ensure that build fails in this scenario -->
+          <!--<skipTests>true</skipTests>-->
+
+          <!--<failIfNoTests>true</failIfNoTests>-->
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.2.1</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
