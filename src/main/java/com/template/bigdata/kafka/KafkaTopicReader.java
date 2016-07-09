@@ -1,4 +1,4 @@
-package com.yahoo.yamas.kafka;
+package com.template.bigdata.kafka;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.yahoo.yamas.storm;
+package com.template.bigdata.storm;
 
 
 import backtype.storm.Config;
