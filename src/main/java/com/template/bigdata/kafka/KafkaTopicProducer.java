@@ -10,8 +10,6 @@ import kafka.producer.ProducerConfig;
 /* 
  * Author : Arunmozhi, 
  * Date: July, 9th 2016
- * Below book is huge reference to build this template.
- * Learning Apache Kafka - Second Edition, By: Nishant Garg
  */
 public class KafkaTopicProducer {
 	private static Producer<String, String> producer;

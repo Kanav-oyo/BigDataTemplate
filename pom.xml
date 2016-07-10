@@ -18,108 +18,53 @@
         <url>http://clojars.org/repo</url> 
       </repository> 
     </repositories> 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-	<!--   <dependency>
-	    <groupId>org.apache.kafka</groupId>
-	    <artifactId>kafka_2.8.0</artifactId>
-	    <version>0.8.0-beta1</version>
-	</dependency>
-    <dependency>
-	    <groupId>log4j</groupId>
-	    <artifactId>log4j</artifactId>
-	    <version>1.2.17</version>
-	</dependency>
-	<dependency>
-	    <groupId>io.dropwizard.metrics</groupId>
-	    <artifactId>metrics-core</artifactId>
-	    <version>3.1.0</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.scala-lang</groupId>
-	    <artifactId>scala-library</artifactId>
-	    <version>2.11.7</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-api</artifactId>
-	    <version>1.7.12</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.apache.zookeeper</groupId>
-	    <artifactId>zookeeper</artifactId>
-	    <version>3.4.5</version>
-	    <type>pom</type>
-	</dependency>
-	<dependency>
-	    <groupId>com.101tec</groupId>
-	    <artifactId>zkclient</artifactId>
-	    <version>0.7</version>
-	</dependency> -->
-      <dependency>
-          <groupId>org.apache.storm</groupId>
-          <artifactId>storm-core</artifactId>
-          <version>0.9.6</version>
-          <exclusions>
-      		<exclusion>
-	      		<artifactId>log4j-over-slf4j</artifactId>
-	      		<groupId>org.slf4j</groupId>
-      		</exclusion>
-      	  </exclusions>
-      </dependency>
-      <dependency>
-          <groupId>org.apache.storm</groupId>
-          <artifactId>storm-kafka</artifactId>
-          <version>0.9.6</version>
-	</dependency>	
-	 <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>0.8.2.1</version>
-    </dependency>
-    <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.10</artifactId>
-            <version>0.8.2.1</version>
-	</dependency>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.storm</groupId>
+			<artifactId>storm-core</artifactId>
+			<version>0.10.0</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.9.1</artifactId>
+			<version>0.8.2.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.storm</groupId>
+			<artifactId>storm-kafka</artifactId>
+			<version>0.10.0-beta1</version>
+		</dependency>
+<!-- 		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>3.0.4</version>
+		</dependency> -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+	</dependencies>
 
-	 <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.21</version>
-</dependency>
-    <dependency>
-        <groupId>storm</groupId>
-        <artifactId>storm</artifactId>
-        <version>0.9.0.1</version>
-      <scope>compile</scope>
-      <exclusions>
-      	<exclusion>
-      		<artifactId>log4j-over-slf4j</artifactId>
-      		<groupId>org.slf4j</groupId>
-      	</exclusion>
-      	<exclusion>
-      		<artifactId>slf4j-api</artifactId>
-      		<groupId>org.slf4j</groupId>
-      	</exclusion>
-      	<exclusion>
-      		<artifactId>logback-classic</artifactId>
-      		<groupId>ch.qos.logback</groupId>
-      	</exclusion>
-      </exclusions>
-    </dependency>	
-    
-  </dependencies>
-
-  
-
-        
-        
     <build>
     <finalName>BigDataTemplate</finalName>
     <plugins>

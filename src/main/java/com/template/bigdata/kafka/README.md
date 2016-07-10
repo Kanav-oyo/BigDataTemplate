@@ -13,3 +13,7 @@ Eg: java -cp ./target/BigDataTemplate-jar-with-dependencies.jar com.template.big
  2. Use gzip to compress the data
  3. Kafka producer with custom partitioning
  4. Multi threaded Kafka Consumer 
+
+ 
+ #### Reference
+ 1. Learning Apache Kafka - Second Edition, By: Nishant Garg

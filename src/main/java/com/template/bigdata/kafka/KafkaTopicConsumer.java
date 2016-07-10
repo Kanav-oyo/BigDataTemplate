@@ -2,8 +2,6 @@ package com.template.bigdata.kafka;
 /* 
  * Author : Arunmozhi, 
  * Date: July, 9th 2016
- * Below book is huge reference to build this template.
- * Learning Apache Kafka - Second Edition, By: Nishant Garg
  */
 import java.util.HashMap;
 import java.util.List;
