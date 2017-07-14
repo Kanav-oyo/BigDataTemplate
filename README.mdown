@@ -1,0 +1,6 @@
+Build Status [![Build Status](https://api.travis-ci.org/raarunmozhi/BigDataTemplate.png)](https://travis-ci.org/raarunmozhi/BigDataTemplate)
+
+# BigDataTemplate
+
+This repository provides basic template to guide you to understand Apache Storm, Kafka, Zookeeper. It will provide you a good hands-on on bigdata concepts.
+This template will be helpful in your project/work environment to complete task quickly. Happy Bigdata learning !!!
