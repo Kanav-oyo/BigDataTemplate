@@ -1,5 +1,12 @@
 package com.bigdata.localcluster;
 
+import kafka.api.FetchRequest;
+import kafka.api.FetchRequestBuilder;
+import kafka.javaapi.FetchResponse;
+import kafka.javaapi.consumer.SimpleConsumer;
+import kafka.javaapi.producer.Producer;
+import kafka.producer.KeyedMessage;
+import kafka.producer.ProducerConfig;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -15,8 +22,12 @@ public class MyTest {
     private static KafkaLocal kafka;
     private static final String DEFAULT_KAFKA_LOG_DIR = "/tmp/test/kafka_embedded";
     private static final String DEFAULT_ZOOKEEPER_LOG_DIR = "/tmp/test/zookeeper";
+    private static final String TEST_TOPIC = "test_topic";
     private static final int BROKER_ID = 0;
     private static final int BROKER_PORT = 5000;
+    private static final String LOCALHOST_BROKER = String.format("localhost:%d", BROKER_PORT);
+
+
     @BeforeClass
     public static void startKafka(){
         Properties kafkaProperties;
@@ -40,8 +51,32 @@ public class MyTest {
     }
 
     @Test
-    public void testSomething() {
+    public void testSomething() throws InterruptedException {
+
+        Properties props = new Properties();
+
+        props.put("metadata.broker.list", LOCALHOST_BROKER);
+        props.put("serializer.class", "kafka.serializer.StringEncoder");
+
+        ProducerConfig config = new ProducerConfig(props);
+        Producer<String, String> producer = new Producer<String, String>(config);
+
+        // send one message to local kafka server:
+        for (int i = 0; i < 10; i++) {
+            KeyedMessage<String, String> data =
+                    new KeyedMessage<String, String>(TEST_TOPIC, null, "test-message" + i);
+
+            producer.send(data);
+            System.out.println("sent: " + data.message());
+        }
+        producer.close();
+        kafka.stop();
     }
+
+    public static SimpleConsumer getNewConsumer() {
+        return new SimpleConsumer("localhost", BROKER_PORT, 10000, 1024000, "test_client");
+    }
+
 
 
     private static Properties getKafkaProperties(String logDir, int port, int brokerId) {
