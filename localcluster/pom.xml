@@ -10,6 +10,13 @@
   <name>localcluster</name>
   <url>http://maven.apache.org</url>
 
+  <parent>
+    <groupId>com.bigdata</groupId>
+    <artifactId>template</artifactId>
+    <version>1.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <testng.version>6.10</testng.version>

@@ -3,6 +3,7 @@ package com.bigdata.localcluster;
 import org.apache.zookeeper.server.ServerConfig;
 import org.apache.zookeeper.server.ZooKeeperServerMain;
 import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
+import scala.util.control.Exception;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,8 +20,8 @@ public class ZooKeeperLocal {
         QuorumPeerConfig quorumConfiguration = new QuorumPeerConfig();
         try {
             quorumConfiguration.parseProperties(zkProperties);
-        } catch(Exception e) {
-            throw new RuntimeException(e);
+        } catch(Throwable throwable) {
+            throw new RuntimeException(throwable);
         }
 
         zooKeeperServer = new ZooKeeperServerMain();
